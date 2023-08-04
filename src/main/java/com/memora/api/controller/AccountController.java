@@ -1,9 +1,9 @@
-package com.memora.api.controller.account;
+package com.memora.api.controller;
 
 import com.memora.api.data.ResponseMessage;
 import com.memora.api.data.dto.LoginUserDto;
 import com.memora.api.data.dto.RegisterUserDto;
-import com.memora.api.service.account.AccountService;
+import com.memora.api.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

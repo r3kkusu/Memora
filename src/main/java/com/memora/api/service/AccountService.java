@@ -1,4 +1,4 @@
-package com.memora.api.service.account;
+package com.memora.api.service;
 
 import com.memora.api.data.dto.LoginUserDto;
 import com.memora.api.data.dto.RegisterUserDto;
