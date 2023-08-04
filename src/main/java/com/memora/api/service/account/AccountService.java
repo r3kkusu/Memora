@@ -51,7 +51,6 @@ public class AccountService {
         }
 
         String saltedPassword = loginDto.getPassword() + user.getPasswordSalt();
-        String hashedPassword = passwordEncoder.encode(saltedPassword);
-        return hashedPassword.equals(user.getPasswordHash());
+        return passwordEncoder.matches(saltedPassword, user.getPasswordHash());
     }
 }
