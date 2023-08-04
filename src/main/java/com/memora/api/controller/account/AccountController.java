@@ -1,16 +1,19 @@
 package com.memora.api.controller.account;
 
 import com.memora.api.data.ResponseMessage;
-import com.memora.api.data.dto.UserDto;
+import com.memora.api.data.dto.LoginUserDto;
+import com.memora.api.data.dto.RegisterUserDto;
 import com.memora.api.service.account.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/v1/account")
 public class AccountController {
 
     private final AccountService accountService;
@@ -20,19 +23,33 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @PostMapping("/v1/account/register")
-    public ResponseEntity<ResponseMessage<UserDto>> registerUser(@RequestBody UserDto userDto) {
+    @PostMapping("/register")
+    public ResponseEntity<ResponseMessage<RegisterUserDto>> registerUser(@RequestBody RegisterUserDto registerUserDto) {
         try {
-            accountService.registerUser(userDto);
+            accountService.registerUser(registerUserDto);
 
-            ResponseMessage<UserDto> responseMessage = new ResponseMessage<UserDto>();
-            responseMessage.setMessage("Username " + userDto.getUsername() + " successfully registered");
-            responseMessage.setData(userDto);
+            ResponseMessage<RegisterUserDto> responseMessage = new ResponseMessage<RegisterUserDto>();
+            responseMessage.setMessage("Username " + registerUserDto.getUsername() + " successfully registered");
+            responseMessage.setData(registerUserDto);
 
             return new ResponseEntity<>(responseMessage, HttpStatus.OK);
         } catch (Exception e) {
-            ResponseMessage<UserDto> responseMessage = new ResponseMessage<UserDto>(e.getMessage(), false, userDto);
+            ResponseMessage<RegisterUserDto> responseMessage = new ResponseMessage<RegisterUserDto>(e.getMessage(), false, registerUserDto);
             return new ResponseEntity<>(responseMessage, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<ResponseMessage<String>> login(@RequestBody LoginUserDto loginUserDto) {
+
+        if (accountService.authenticateUser(loginUserDto)) {
+            ResponseMessage<String> responseMessage = new ResponseMessage<>();
+            responseMessage.setMessage("Login successful");
+            return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+        } else {
+            ResponseMessage<String> responseMessage = new ResponseMessage<>();
+            responseMessage.setMessage("Login failed. Invalid credentials.");
+            return new ResponseEntity<>(responseMessage, HttpStatus.UNAUTHORIZED);
         }
     }
 }

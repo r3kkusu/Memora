@@ -34,7 +34,7 @@ public class User {
     private String lastName;
 
     @NotNull
-    private String passwordHast;
+    private String passwordHash;
 
     @NotNull
     private String passwordSalt;

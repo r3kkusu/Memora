@@ -2,7 +2,7 @@ package com.memora.api.data.dto;
 
 import lombok.Data;
 @Data
-public class UserDto {
+public class RegisterUserDto {
     private long id;
     private String email;
     private String username;
