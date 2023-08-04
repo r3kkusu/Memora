@@ -34,8 +34,10 @@ public class User {
     private String lastName;
 
     @NotNull
-    @Size(min = 6, max = 100)
-    private String password;
+    private String passwordHast;
+
+    @NotNull
+    private String passwordSalt;
 
     private long birthDate;
     private long dateCreated;

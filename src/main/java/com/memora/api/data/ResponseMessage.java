@@ -9,8 +9,8 @@ import java.util.List;
 @Data
 public class ResponseMessage<T> {
 
-    private boolean isSuccess = false;
-    private List<String> errors = new ArrayList<>();
+    private boolean isSuccess;
+    private List<String> errors;
     private String message;
     private long timestamp;
     private T data;
@@ -24,7 +24,7 @@ public class ResponseMessage<T> {
     }
 
     public ResponseMessage(String message, boolean isSuccess, T data) {
-        this(message, null, isSuccess, DateUtil.getCurrentTimeStamp(), data);
+        this(message, new ArrayList<>(), isSuccess, DateUtil.getCurrentTimeStamp(), data);
     }
 
     public ResponseMessage(String message, List<String> errors, boolean isSuccess, long timestamp, T data) {
