@@ -1,6 +1,6 @@
 package com.memora.api.data;
 
-import com.memora.api.util.DateUtil;
+import com.memora.api.util.DateUtils;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ResponseMessage<T> {
     }
 
     public ResponseMessage(String message, boolean isSuccess, T data) {
-        this(message, new ArrayList<>(), isSuccess, DateUtil.getCurrentTimeStamp(), data);
+        this(message, new ArrayList<>(), isSuccess, DateUtils.getCurrentTimeStamp(), data);
     }
 
     public ResponseMessage(String message, List<String> errors, boolean isSuccess, long timestamp, T data) {

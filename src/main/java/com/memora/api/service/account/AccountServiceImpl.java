@@ -1,4 +1,4 @@
-package com.memora.api.service;
+package com.memora.api.service.account;
 
 import com.memora.api.data.dto.LoginUserDto;
 import com.memora.api.data.dto.RegisterUserDto;
@@ -13,16 +13,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountService {
-
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+public class AccountServiceImpl implements AccountService{
 
     @Autowired
-    private AccountService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public void registerUser(RegisterUserDto registerUserDto) throws UserException {
         User user = UserMapper.INSTANCE.userDtoToUser(registerUserDto);
