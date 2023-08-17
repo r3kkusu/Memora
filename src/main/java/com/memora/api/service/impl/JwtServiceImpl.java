@@ -7,6 +7,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -32,9 +33,9 @@ public class JwtServiceImpl implements JwtService {
     }
 
     @Override
-    public boolean isValidToken(String token, String email) {
+    public boolean isValidToken(String token, UserDetails userDetails) {
         final String userEmail = extractUserEmail(token);
-        return (userEmail.equals(email)) && !isTokenExpired(token);
+        return (userEmail.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolvers) {

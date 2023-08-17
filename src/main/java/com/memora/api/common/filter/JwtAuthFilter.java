@@ -1,8 +1,9 @@
-package com.memora.api.common.config;
+package com.memora.api.common.filter;
 
 import java.io.IOException;
 
 import com.memora.api.service.JwtService;
+import com.memora.api.service.UserService;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
@@ -21,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+public class JwtAuthFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserService userService;
     @Override

@@ -21,7 +21,6 @@ public class AuthController {
 
     private final UserService userService;
     private final AuthService authService;
-    private final JwtService jwtService;
 
     @PostMapping("/signUp")
     public ResponseEntity<ResponseMessage<SignUpUserDto>> signUp(@RequestBody SignUpUserDto signUpUserDto) {
@@ -44,7 +43,7 @@ public class AuthController {
         ResponseMessage<String> responseMessage = new ResponseMessage<>();
 
         if (authService.authenticate(signInUserDto)) {
-            String jwtToken = jwtService.generateToken(signInUserDto.getEmail());
+            String jwtToken = authService.generateToken(signInUserDto);
             responseMessage.setMessage("Login successful");
             responseMessage.setData(jwtToken);
             return ResponseEntity.ok(responseMessage);

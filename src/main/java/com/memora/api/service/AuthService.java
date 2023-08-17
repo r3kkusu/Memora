@@ -7,4 +7,5 @@ import com.memora.api.data.model.User;
 public interface AuthService {
     boolean authenticate(SignInUserDto signInUserDto);
     void hashPassword(User user, SignUpUserDto signUpUserDto);
+    String generateToken(SignInUserDto signInUserDto);
 }

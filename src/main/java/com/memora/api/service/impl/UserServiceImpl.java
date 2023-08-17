@@ -9,6 +9,9 @@ import com.memora.api.common.validator.AuthValidator;
 import com.memora.api.service.AuthService;
 import com.memora.api.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,5 +34,11 @@ public class UserServiceImpl implements UserService {
 
         authService.hashPassword(user, signUpUserDto);
         userRepository.save(user);
+    }
+
+    @Override
+    public UserDetailsService userDetailsService() {
+        return username -> userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }
