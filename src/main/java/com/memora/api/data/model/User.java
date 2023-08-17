@@ -1,10 +1,16 @@
 package com.memora.api.data.model;
 
+import com.memora.api.common.constants.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.Collection;
+import java.util.List;
 
 
 @Entity
@@ -41,4 +47,11 @@ public class User {
 
     private long birthDate;
     private long dateCreated;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
 }

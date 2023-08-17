@@ -1,6 +1,6 @@
 package com.memora.api.data;
 
-import com.memora.api.util.DateUtils;
+import com.memora.api.common.util.DateUtils;
 import lombok.Data;
 
 import java.util.ArrayList;
