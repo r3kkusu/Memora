@@ -1,37 +1,37 @@
 HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+memora-api/.gradle
+memora-api/build/
+memora-api/!gradle/wrapper/gradle-wrapper.jar
+memora-api/!**/src/main/**/build/
+memora-api/!**/src/test/**/build/
 
 ### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+memora-api/.apt_generated
+memora-api/.classpath
+memora-api/.factorypath
+memora-api/.project
+memora-api/.settings
+memora-api/.springBeans
+memora-api/.sts4-cache
+memora-api/bin/
+memora-api/!**/src/main/**/bin/
+memora-api/!**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+memora-api/.idea
+memora-api/*.iws
+memora-api/*.iml
+memora-api/*.ipr
+memora-api/out/
+memora-api/!**/src/main/**/out/
+memora-api/!**/src/test/**/out/
 
 ### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+memora-api/nbproject/private/
+memora-api/nbbuild/
+memora-api/dist/
+memora-api/nbdist/
+memora-api/.nb-gradle/
 
 ### VS Code ###
-.vscode/
+memora-api/.vscode/
