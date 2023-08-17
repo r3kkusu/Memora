@@ -1,4 +1,4 @@
-package com.memora.api.util;
+package com.memora.api.common.util;
 
 public class DateUtils {
 

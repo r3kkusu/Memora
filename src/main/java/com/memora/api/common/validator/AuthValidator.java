@@ -1,4 +1,4 @@
-package com.memora.api.validator;
+package com.memora.api.common.validator;
 
 public class AuthValidator {
     public static boolean isValidPassword(String password) {

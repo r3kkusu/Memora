@@ -3,7 +3,7 @@ package com.memora.api.data.dto;
 import lombok.Data;
 
 @Data
-public class LoginUserDto {
+public class SignInUserDto {
     private String email;
     private String password;
 }

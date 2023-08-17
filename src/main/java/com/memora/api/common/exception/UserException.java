@@ -1,4 +1,4 @@
-package com.memora.api.exception;
+package com.memora.api.common.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
