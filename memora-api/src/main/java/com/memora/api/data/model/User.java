@@ -33,11 +33,11 @@ public class User implements UserDetails {
     private String username;
 
     @NotNull
-    @Size(min = 6, max = 100)
+    @Size(min = 3, max = 100)
     private String firstName;
 
     @NotNull
-    @Size(min = 6, max = 100)
+    @Size(min = 3, max = 100)
     private String lastName;
 
     @NotNull
