@@ -4,7 +4,6 @@ import com.memora.api.data.ResponseMessage;
 import com.memora.api.data.dto.SignInUserDto;
 import com.memora.api.data.dto.SignUpUserDto;
 import com.memora.api.service.AuthService;
-import com.memora.api.service.JwtService;
 import com.memora.api.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -27,13 +26,13 @@ public class AuthController {
         try {
             userService.signUp(signUpUserDto);
 
-            ResponseMessage<SignUpUserDto> responseMessage = new ResponseMessage<SignUpUserDto>();
+            ResponseMessage<SignUpUserDto> responseMessage = new ResponseMessage<>();
             responseMessage.setMessage("Username " + signUpUserDto.getUsername() + " successfully registered");
             responseMessage.setData(signUpUserDto);
 
             return new ResponseEntity<>(responseMessage, HttpStatus.OK);
         } catch (Exception e) {
-            ResponseMessage<SignUpUserDto> responseMessage = new ResponseMessage<SignUpUserDto>(e.getMessage(), false, signUpUserDto);
+            ResponseMessage<SignUpUserDto> responseMessage = new ResponseMessage<>(e.getMessage(), false, signUpUserDto);
             return new ResponseEntity<>(responseMessage, HttpStatus.BAD_REQUEST);
         }
     }
