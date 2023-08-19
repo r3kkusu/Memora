@@ -35,10 +35,4 @@ public class UserServiceImpl implements UserService {
         authService.hashPassword(user, signUpUserDto);
         userRepository.save(user);
     }
-
-    @Override
-    public UserDetailsService userDetailsService() {
-        return username -> userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-    }
 }

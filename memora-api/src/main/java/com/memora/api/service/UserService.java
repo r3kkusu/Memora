@@ -6,5 +6,4 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService {
     void signUp(SignUpUserDto signUpUserDto) throws UserException;
-    UserDetailsService userDetailsService();
 }
